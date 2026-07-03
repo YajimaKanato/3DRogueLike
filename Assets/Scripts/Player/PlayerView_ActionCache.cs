@@ -5,6 +5,7 @@ public partial class PlayerView
 {
     InputAction _move;
     InputAction _run;
+    InputAction _rotation;
 
     /// <summary>
     /// アクションをキャッシュするメソッド
@@ -15,5 +16,6 @@ public partial class PlayerView
         _actions = actions;
         _move = _actions.Ingame.Move;
         _run = _actions.Ingame.Run;
+        _rotation = _actions.Ingame.Rotation;
     }
 }
