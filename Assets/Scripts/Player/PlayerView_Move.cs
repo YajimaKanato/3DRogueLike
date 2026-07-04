@@ -15,18 +15,19 @@ public partial class PlayerView
 
     void Move()
     {
+        if (_moveParam == null) return;
+
         var dir = _move.ReadValue<Vector2>();
         // キーボード入力の場合は正規化
         if (Gamepad.current == null || Gamepad.current.rightStick.ReadValue().sqrMagnitude <= 0.01f)
             dir = dir.normalized;
-        if (dir != Vector2.zero) _preDir = dir;
 
         // 速度取得
-        var velo = _moveParam != null ? _moveParam.GetVelocity(_isRunning, dir) : Vector3.zero;
+        var velo = _moveParam.GetVelocity(_isRunning, ref dir);
+        if (dir != Vector2.zero) _preDir = dir.normalized;
         var moveDir = transform.forward * velo.z + transform.right * velo.x;
         moveDir.y = _rb.linearVelocity.y;
         _rb.linearVelocity = moveDir;
-        // 入力と移動速度が一致した時に入力保存
     }
 
     void Run()

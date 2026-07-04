@@ -39,8 +39,6 @@ public partial class PlayerView : MonoBehaviour
         _animator?.SetFloat("Velocity", _rb.linearVelocity.sqrMagnitude);
         // Rigidbody.linearVelocityとtransformの右や前との内積を取ると
         // 内積を取った方向にかかる速度の大きさがわかる
-        var rightSpeed = Vector3.Dot(_preDir, transform.right);
-        var forwardSpeed = Vector3.Dot(_preDir, transform.forward);
         _animator?.SetFloat("MoveX", _preDir.x);
         _animator?.SetFloat("MoveZ", _preDir.y);
     }
