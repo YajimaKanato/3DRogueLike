@@ -27,6 +27,8 @@ public partial class PlayerView : MonoBehaviour
     {
         Run();
         Rotation();
+        Attack();
+        Jump();
     }
 
     private void FixedUpdate()
@@ -36,10 +38,20 @@ public partial class PlayerView : MonoBehaviour
 
     private void LateUpdate()
     {
-        _animator?.SetFloat("Velocity", _rb.linearVelocity.sqrMagnitude);
+        var currentVelo = _rb.linearVelocity;
+        currentVelo.y = 0;
+        _animator?.SetFloat("Velocity", currentVelo.sqrMagnitude);
         // Rigidbody.linearVelocityとtransformの右や前との内積を取ると
         // 内積を取った方向にかかる速度の大きさがわかる
         _animator?.SetFloat("MoveX", _preDir.x);
         _animator?.SetFloat("MoveZ", _preDir.y);
+        _animator?.SetFloat("VelocityVertical", _rb.linearVelocity.y);
+        _animator?.SetBool("IsGround", _isGround);
+        _animator?.SetBool("Attack", _attackBuffer.HasInput);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        DrawSphereCast();
     }
 }

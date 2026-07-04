@@ -118,6 +118,24 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""be4c87b4-cf8d-436c-991c-f98c1cab676e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""32159a28-ba0e-41a2-a01a-d2461f47da6d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -241,6 +259,28 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83c74048-7ded-469e-98e0-0a13893bcc3e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d22eff5-f066-45d5-ba6f-5ed9478a67b7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +292,8 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         m_Ingame_Move = m_Ingame.FindAction("Move", throwIfNotFound: true);
         m_Ingame_Run = m_Ingame.FindAction("Run", throwIfNotFound: true);
         m_Ingame_Rotation = m_Ingame.FindAction("Rotation", throwIfNotFound: true);
+        m_Ingame_Attack = m_Ingame.FindAction("Attack", throwIfNotFound: true);
+        m_Ingame_Jump = m_Ingame.FindAction("Jump", throwIfNotFound: true);
     }
 
     ~@Actions()
@@ -335,6 +377,8 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Ingame_Move;
     private readonly InputAction m_Ingame_Run;
     private readonly InputAction m_Ingame_Rotation;
+    private readonly InputAction m_Ingame_Attack;
+    private readonly InputAction m_Ingame_Jump;
     /// <summary>
     /// Provides access to input actions defined in input action map "Ingame".
     /// </summary>
@@ -358,6 +402,14 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Ingame/Rotation".
         /// </summary>
         public InputAction @Rotation => m_Wrapper.m_Ingame_Rotation;
+        /// <summary>
+        /// Provides access to the underlying input action "Ingame/Attack".
+        /// </summary>
+        public InputAction @Attack => m_Wrapper.m_Ingame_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "Ingame/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_Ingame_Jump;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -393,6 +445,12 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Rotation.started += instance.OnRotation;
             @Rotation.performed += instance.OnRotation;
             @Rotation.canceled += instance.OnRotation;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         /// <summary>
@@ -413,6 +471,12 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Rotation.started -= instance.OnRotation;
             @Rotation.performed -= instance.OnRotation;
             @Rotation.canceled -= instance.OnRotation;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         /// <summary>
@@ -474,5 +538,19 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRotation(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
     }
 }
