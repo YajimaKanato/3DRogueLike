@@ -28,6 +28,7 @@ public partial class PlayerView : MonoBehaviour
         Run();
         Rotation();
         Attack();
+        Sheathe();
         Jump();
     }
 
@@ -41,13 +42,12 @@ public partial class PlayerView : MonoBehaviour
         var currentVelo = _rb.linearVelocity;
         currentVelo.y = 0;
         _animator?.SetFloat("Velocity", currentVelo.sqrMagnitude);
-        // Rigidbody.linearVelocityとtransformの右や前との内積を取ると
-        // 内積を取った方向にかかる速度の大きさがわかる
         _animator?.SetFloat("MoveX", _preDir.x);
         _animator?.SetFloat("MoveZ", _preDir.y);
         _animator?.SetFloat("VelocityVertical", _rb.linearVelocity.y);
         _animator?.SetBool("IsGround", _isGround);
         _animator?.SetBool("Attack", _attackBuffer.HasInput);
+        _animator?.SetBool("Sheathe", _sheatheBuffer.HasInput);
     }
 
     private void OnDrawGizmosSelected()

@@ -6,8 +6,9 @@ public partial class PlayerView
     InputAction _move;
     InputAction _run;
     InputAction _rotation;
-    InputAction _attack;
     InputAction _jump;
+    InputAction _attack;
+    InputAction _sheathe;
 
     /// <summary>
     /// アクションをキャッシュするメソッド
@@ -19,7 +20,8 @@ public partial class PlayerView
         _move = _actions.Ingame.Move;
         _run = _actions.Ingame.Run;
         _rotation = _actions.Ingame.Rotation;
-        _attack = _actions.Ingame.Attack;
         _jump = _actions.Ingame.Jump;
+        _attack = _actions.Ingame.Attack;
+        _sheathe = _actions.Ingame.Sheathe;
     }
 }

@@ -1994,6 +1994,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b98881c501cd94a93186cd90dfb380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerView
+  _attackBuffer:
+    _bufferDuration: 0.2
+  _sheatheBuffer:
+    _bufferDuration: 0.2
+  _jumpPower: 5
+  _jumpBuffer:
+    _bufferDuration: 0.2
+  _sphereCastRadius: 0.1
+  _rayDistance: 0.1
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
   _moveParam:
     _speedCurve:
       serializedVersion: 2
@@ -2030,6 +2042,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     _walkMaxXAxis: 5
     _runMaxXAxis: 10
+    _noInputDamping: 2
   _mouseRotation: 0.5
   _gamepadRotation: 180
 --- !u!1 &9147220684158477302

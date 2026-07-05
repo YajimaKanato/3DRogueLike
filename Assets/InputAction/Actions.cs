@@ -136,6 +136,15 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sheathe"",
+                    ""type"": ""Button"",
+                    ""id"": ""478d9c06-18e0-4afa-a4dd-88f4ddd331f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -281,6 +290,17 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02d5126a-1735-4d87-acdd-2c1b5c109055"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sheathe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -294,6 +314,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         m_Ingame_Rotation = m_Ingame.FindAction("Rotation", throwIfNotFound: true);
         m_Ingame_Attack = m_Ingame.FindAction("Attack", throwIfNotFound: true);
         m_Ingame_Jump = m_Ingame.FindAction("Jump", throwIfNotFound: true);
+        m_Ingame_Sheathe = m_Ingame.FindAction("Sheathe", throwIfNotFound: true);
     }
 
     ~@Actions()
@@ -379,6 +400,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Ingame_Rotation;
     private readonly InputAction m_Ingame_Attack;
     private readonly InputAction m_Ingame_Jump;
+    private readonly InputAction m_Ingame_Sheathe;
     /// <summary>
     /// Provides access to input actions defined in input action map "Ingame".
     /// </summary>
@@ -410,6 +432,10 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Ingame/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Ingame_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Ingame/Sheathe".
+        /// </summary>
+        public InputAction @Sheathe => m_Wrapper.m_Ingame_Sheathe;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -451,6 +477,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Sheathe.started += instance.OnSheathe;
+            @Sheathe.performed += instance.OnSheathe;
+            @Sheathe.canceled += instance.OnSheathe;
         }
 
         /// <summary>
@@ -477,6 +506,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Sheathe.started -= instance.OnSheathe;
+            @Sheathe.performed -= instance.OnSheathe;
+            @Sheathe.canceled -= instance.OnSheathe;
         }
 
         /// <summary>
@@ -552,5 +584,12 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Sheathe" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSheathe(InputAction.CallbackContext context);
     }
 }
