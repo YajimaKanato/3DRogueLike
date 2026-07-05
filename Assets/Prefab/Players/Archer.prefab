@@ -1886,7 +1886,7 @@ GameObject:
   - component: {fileID: 99059267047108651}
   - component: {fileID: 891600940292141146}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1920,7 +1920,7 @@ Animator:
   m_GameObject: {fileID: 8045068574854239722}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2faa610713d3b3c439473daa55e8c60a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2bcda5b1da651f84f9889470c581b6ed, type: 2}
+  m_Controller: {fileID: 9100000, guid: a4b23968274624448ae94f4702901ee8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
