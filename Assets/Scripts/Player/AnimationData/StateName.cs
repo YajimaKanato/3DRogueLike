@@ -1,12 +1,12 @@
-using UnityEngine;
 using EnumRemapper.Runtime;
 
 [EnumRemap]
-public enum AnimationStateName
+public enum StateName
 {
     Idle,
     Unsheathe,
     Sheathe,
     Hold,
-    Load
+    Load,
+    Attack
 }

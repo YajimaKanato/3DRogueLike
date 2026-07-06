@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.knty1018.enum-remapper": "https://github.com/YajimaKanato/EnumRemapper.git?path=/EnumRemapper",
     "com.unity.ai.navigation": "2.0.10",
     "com.unity.cinemachine": "3.1.7",
