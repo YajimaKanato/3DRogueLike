@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.knty1018.enum-remapper": {
+      "version": "https://github.com/YajimaKanato/EnumRemapper.git?path=/EnumRemapper",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2c5c991e07921c22650ad077a09e32912eac2326"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.10",
       "depth": 0,

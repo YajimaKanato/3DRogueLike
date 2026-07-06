@@ -1,0 +1,14 @@
+{
+    "Enums": [
+        {
+            "FullName": "AnimationStateName",
+            "Names": [
+                "Idle",
+                "Unsheathe",
+                "Sheathe",
+                "Hold",
+                "Load"
+            ]
+        }
+    ]
+}
